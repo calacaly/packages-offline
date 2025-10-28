@@ -6,10 +6,8 @@ echo "📘 [APT] 更新包索引..."
 cp -rf /tmp/apt/* /etc/apt/
 apt-get update
 
-echo "📘 [APT] 清除${PACKAGES}原有文件"
-rm -rf ${PACKAGES}/*
-
 echo "📘 [APT] 下载包: ${PACKAGES}"
+
 apt-get install -d -y ${PACKAGES}
 
 echo "📘 [APT] 复制到 ${OUTPUT_DIR}"

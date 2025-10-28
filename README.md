@@ -25,7 +25,6 @@ cd offline-package-downloader
 
 ```bash
 mkdir -p output
-mkdir -p packages
 ```
 
 ### 3. 配置 .env 文件

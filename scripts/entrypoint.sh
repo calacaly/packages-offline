@@ -12,6 +12,7 @@ export OUTPUT_DIR="/offline-packages"
 export PACKAGE_MANAGER="${PACKAGE_MANAGER:-apt}"
 export PACKAGES="${PACKAGES:-build-essential}"
 
+rm -rf ${OUTPUT_DIR}
 mkdir -p "${OUTPUT_DIR}"
 
 log "启动离线包下载系统"
