@@ -55,7 +55,7 @@ offline-packages-yum.tgz（YUM 系统）
 
 编辑文件：`mirrors/apt/sources.list`
 
-### 修改 YUM 源（CentOS/Rocky）
+### ✅ 修改 YUM 源（CentOS/Rocky）
 编辑或添加：`mirrors/yum/CentOS-Base.repo`
 
 
@@ -63,6 +63,7 @@ offline-packages-yum.tgz（YUM 系统）
 脚本位于 scripts/ 目录，可根据需要调整行为。
 
 ✅ 微调 scripts/download-apt.sh
+
 ✅ 微调 scripts/download-yum.sh
 
 常见修改建议：
