@@ -59,7 +59,7 @@ offline-packages-yum.tgz（YUM 系统）
 编辑或添加：`mirrors/yum/CentOS-Base.repo`
 
 
-### 🛠️ 如何微调下载脚本
+## 🛠️ 如何微调下载脚本
 脚本位于 scripts/ 目录，可根据需要调整行为。
 
 ✅ 微调 scripts/download-apt.sh
@@ -87,11 +87,14 @@ PACKAGES="@development-tools"
 yum install -y --downloadonly --downloaddir="${OUTPUT_DIR}" --enablerepo=epel ${PACKAGES}
 ```
 
-### 📌 优势
-特性	说明
-🔧 配置驱动	只改 .env 就能切换系统
-📦 自动打包	输出 .tgz，方便分发
-📝 安装指引	终端自动输出安装方法
-🐳 无污染	所有操作在容器内完成
-🌐 源可控	mirrors/ 目录统一管理
-🚫 无 HTTPS	使用 HTTP 避免证书问题
+## 📌 优势
+
+| 特性 | 说明 |
+|------|------|
+| 🔧 配置驱动 | 只需修改 `.env` 文件即可切换包管理器、镜像和软件包 |
+| 📦 自动打包 | 下载完成后自动打包为 `.tgz` 文件，便于分发 |
+| 📝 安装指引 | 终端自动输出离线安装命令，清晰易用 |
+| 🐳 环境隔离 | 所有操作在 Docker 容器内完成，不污染主机 |
+| 🌐 源可控 | 通过 `mirrors/` 目录统一管理 APT/YUM 源，支持内网镜像 |
+| 🚫 无 HTTPS 依赖 | 使用 HTTP 源避免容器内缺少 CA 证书导致下载失败 |
+| 🛠️ 易于扩展 | 脚本结构清晰，可轻松支持 `dnf`、`zypper` 等其他包管理器 |
