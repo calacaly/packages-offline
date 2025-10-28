@@ -1,0 +1,23 @@
+services:
+  offline-downloader:
+    image: ${OS_IMAGE:-ubuntu:24.04}
+    container_name: offline-${PACKAGE_MANAGER}-downloader
+    hostname: builder-${PACKAGE_MANAGER}
+    volumes:
+      - ./packages:/offline-packages
+      - ./output:/output
+      - ./mirrors/${PACKAGE_MANAGER}:/tmp/${PACKAGE_MANAGER}
+      - ./scripts/download-apt.sh:/usr/local/bin/download-apt.sh
+      - ./scripts/download-yum.sh:/usr/local/bin/download-yum.sh
+      - ./scripts/entrypoint.sh:/usr/local/bin/entrypoint.sh
+    environment:
+      - PACKAGE_MANAGER=${PACKAGE_MANAGER:-apt}
+      - OS_IMAGE=${OS_IMAGE}
+      - PACKAGES=${PACKAGES:-build-essential}
+    command: ["sh", "-c", "chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/download-apt.sh /usr/local/bin/download-yum.sh &&  exec /usr/local/bin/entrypoint.sh"]
+    networks:
+      - offline-net
+
+networks:
+  offline-net:
+    driver: bridge
